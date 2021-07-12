@@ -1,0 +1,27 @@
+{
+    "name": "swish-nextjs",
+    "version": "0.1.0",
+    "private": true,
+    "author": {
+        "name": "Alejandro Moreno",
+        "email": "carlos_y_laura@hotmail.com",
+        "url": "http://web.amgra"
+    },
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "harperive": "^2.0.1",
+        "next": "11.0.1",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "shortid": "^2.2.16"
+    },
+    "devDependencies": {
+        "eslint": "7.30.0",
+        "eslint-config-next": "11.0.1"
+    }
+}
