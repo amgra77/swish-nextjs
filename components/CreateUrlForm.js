@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 export default function CreateUrlForm(props) {
+    console.log('props.props ', props.props);
     const handleSubmit = async(event) => {
         event.preventDefault();
         const options = {
@@ -22,6 +23,7 @@ export default function CreateUrlForm(props) {
 
     return (
         <div className="card">
+            <h3>URL</h3>
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <input type="text" name="longUrl" placeholder="Enter URL" value={props.longUrl} />

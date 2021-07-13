@@ -6,7 +6,7 @@ import ResultUrl from '../components/ResultUrl';
 export default function HomePage() {
     function handleDataChange(event) {
         setData({
-            shortUrl: event.shortUrl,
+            shortUrl: location.protocol + event.shortUrl,
             longUrl: event.longUrl,
         });
     }
@@ -14,7 +14,6 @@ export default function HomePage() {
     const [data, setData] = useState({
         longUrl: '',
         shortUrl: '',
-        onDataChange: handleDataChange,
     });
     return (
         <div>
@@ -24,8 +23,8 @@ export default function HomePage() {
                 <meta name="keywords" content="short, shorten, url, swish, vpalacio, amgra"></meta>
             </Head>
             <section className="sectionhome">
-                <h3>Welcome to</h3>
                 <h1>Swish URL</h1>
+                <h4>Shorten a url</h4>
                 <CreateUrlForm props={data} onDataChange={handleDataChange} />
                 { data.shortUrl ? <ResultUrl props={data} /> : null }
             </section>
