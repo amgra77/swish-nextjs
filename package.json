@@ -1,7 +1,7 @@
 {
     "name": "swish-nextjs",
     "description": "API to shorten URLs made in NextJS",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "private": true,
     "author": {
         "name": "Alejandro Moreno",

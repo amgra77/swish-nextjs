@@ -9,6 +9,7 @@ export default function HomePage() {
         setData({
             shortUrl: location.protocol + event.shortUrl,
             longUrl: event.longUrl,
+            version: stats.version,
         });
     }
 
