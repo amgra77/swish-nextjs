@@ -1,4 +1,5 @@
-import db from '../../../core/db';
+import { client } from '../../../core/db';
+
 const SCHEMA = process.env.INSTANCE_SCHEMA;
 const TABLE = 'url_records';
 
@@ -9,11 +10,11 @@ export default async function handler(req, res) {
     async function increaseCounter(item) {
         const counter = item.counter + 1;
         const SQL = `UPDATE ${SCHEMA}.${TABLE} SET counter=${counter} WHERE id="${item.id}"`;
-        await db.query(SQL);    
+        await client.query(SQL);    
     };
 
     try {
-        const list = await db.query(SQL);
+        const list = await client.query(SQL);
         if (list.data.length && list.data[0].longUrl) {
             const current = list.data[0];
             res.redirect(current.longUrl);
