@@ -10,4 +10,12 @@ const DB_CONFIG = {
 const Client = harperive.Client;
 const client = new Client(DB_CONFIG);
 
-export default client; 
+function buildShort(origin, shortUrl) {
+    return '//' + origin + '/api/go/' + shortUrl;
+}
+
+module.exports = {
+    client,
+    buildShort
+}
+

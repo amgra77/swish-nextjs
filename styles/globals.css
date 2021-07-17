@@ -21,6 +21,9 @@ section.sectionhome {
 section.sectionhome > * {
     margin: 1rem;
 }
+section.footer > * {
+    margin: 1rem;
+}
 pre {
     background-color: lightgray;
     margin: 0 10rem;

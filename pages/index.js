@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Head from 'next/head';
 import CreateUrlForm from '../components/CreateUrlForm';
 import ResultUrl from '../components/ResultUrl';
+import stats from "../package.json";
 
 export default function HomePage() {
     function handleDataChange(event) {
@@ -14,6 +15,7 @@ export default function HomePage() {
     const [data, setData] = useState({
         longUrl: '',
         shortUrl: '',
+        version: stats.version,
     });
     return (
         <div>
@@ -27,6 +29,9 @@ export default function HomePage() {
                 <h4>Shorten a url</h4>
                 <CreateUrlForm props={data} onDataChange={handleDataChange} />
                 { data.shortUrl ? <ResultUrl props={data} /> : null }
+            </section>
+            <section className="footer">
+                <p>Version: {data.version}</p>
             </section>
         </div>
     );
