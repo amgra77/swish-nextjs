@@ -1,16 +1,12 @@
-import db from '../../../core/db';
+import { client, buildShort } from '../../../core/db';
 import shortId from 'shortid';
 const SCHEMA = process.env.INSTANCE_SCHEMA;
 const TABLE = 'url_records';
 
-function buildShort(origin, shortUrl) {
-    return '//' + origin + '/api/go/' + shortUrl;
-}
-
 const getAllUrls = async (origin) => {
     const SQL = `SELECT id, urlCode, longUrl, counter FROM ${SCHEMA}.${TABLE}`;
     try {
-        const list = await db.query(SQL);
+        const list = await client.query(SQL);
         list.data.map(one => {
             one.shortUrl = buildShort(origin, one.urlCode);
         });
@@ -24,7 +20,7 @@ const getAllUrls = async (origin) => {
 
 const createUrl = async (longUrl, origin) => {
     const QUERY = `SELECT * FROM ${SCHEMA}.${TABLE} WHERE longUrl="${longUrl}" LIMIT 1`;
-    const exists = await db.query(QUERY);
+    const exists = await client.query(QUERY);
     if (exists.data.length) {
         const { id, urlCode, longUrl, counter } = exists.data[0];
         const shortUrl = buildShort(origin, urlCode);
@@ -37,7 +33,7 @@ const createUrl = async (longUrl, origin) => {
                 urlCode,
                 counter: 0,
             };
-            const data = await db.insert({
+            const data = await client.insert({
                 table: TABLE,
                 schema: SCHEMA,
                 records: [newUrl],
@@ -45,7 +41,7 @@ const createUrl = async (longUrl, origin) => {
             return {
                 ...newUrl,
                 shortUrl: buildShort(origin, urlCode),
-                id: data.data.inserted_hashes,
+                id: data.data.inserted_hashes[0],
             };
         }
         catch (error) {
@@ -69,10 +65,6 @@ export default async function handler(req, res) {
             const { longUrl } = req.body;
             const data = await createUrl(longUrl, req.headers.host);
             res.status(data.error ? 405 : 201).json(data);
-            break;
-        case 'OPTIONS':
-            res.setHeader('Allow', ['GET','POST']);
-            res.end();
             break;
         default:
             res.status(405).json({message: 'Method not allowed'})

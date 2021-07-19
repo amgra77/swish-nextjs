@@ -2,18 +2,21 @@ import { useState } from 'react'
 import Head from 'next/head';
 import CreateUrlForm from '../components/CreateUrlForm';
 import ResultUrl from '../components/ResultUrl';
+import stats from "../package.json";
 
 export default function HomePage() {
     function handleDataChange(event) {
         setData({
             shortUrl: location.protocol + event.shortUrl,
             longUrl: event.longUrl,
+            version: stats.version,
         });
     }
 
     const [data, setData] = useState({
         longUrl: '',
         shortUrl: '',
+        version: stats.version,
     });
     return (
         <div>
@@ -37,8 +40,12 @@ export default function HomePage() {
                         { data.shortUrl ? <ResultUrl props={data} /> : null }
                     </div>
                 </section>
+                <section className="footer">
+                    <p>Version: {data.version}</p>
+                </section>
             </div>
             
+          
         </div>
     );
 }
