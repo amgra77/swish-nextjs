@@ -19,15 +19,26 @@ export default function HomePage() {
         <div>
             <Head>
                 <title>Swish URL</title>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="description" content="Web app to shorten URLs" />
                 <meta name="keywords" content="short, shorten, url, swish, vpalacio, amgra"></meta>
+                <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+                <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"></link>
+
             </Head>
-            <section className="sectionhome">
-                <h1>Swish URL</h1>
-                <h4>Shorten a url</h4>
-                <CreateUrlForm props={data} onDataChange={handleDataChange} />
-                { data.shortUrl ? <ResultUrl props={data} /> : null }
-            </section>
+            <div className="container mx-auto mt-8">
+                <section className="">
+                    <h1 className="text-lg text-center font-bold mt-10">Swish URL</h1>
+                    <h4 className="text-md text-center mt-10 mb-10">Shorten a url</h4>
+                    <div className="mx-auto">
+                        <CreateUrlForm props={data} onDataChange={handleDataChange}/>
+                        { data.shortUrl ? <ResultUrl props={data} /> : null }
+                    </div>
+                </section>
+            </div>
+            
         </div>
     );
 }

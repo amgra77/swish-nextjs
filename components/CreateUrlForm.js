@@ -22,12 +22,16 @@ export default function CreateUrlForm(props) {
     };
 
     return (
-        <div className="card">
-            <h3>URL</h3>
+        <div className="border-2 rounded p-10 flex flex-col">
+            {/* <h3 className="">URL</h3> */}
             <form onSubmit={handleSubmit}>
-                <div className="row">
-                    <input type="text" name="longUrl" placeholder="Enter URL" value={props.longUrl} />
-                    <button type="submit">Create</button>
+                <div className="">
+                    <input type="text" name="longUrl" placeholder="Enter URL" value={props.longUrl} className="p-8 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"/>
+                </div>
+                <div className="text-right mt-10">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
+                    <i className="fas fa-paper-plane"></i>    Create
+                    </button>
                 </div>
             </form>
         </div>
