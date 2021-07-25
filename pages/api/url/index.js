@@ -1,5 +1,5 @@
 import { client, buildShort } from '../../../core/db';
-import shortId from 'shortid';
+import { nanoid } from 'nanoid';
 const SCHEMA = process.env.INSTANCE_SCHEMA;
 const TABLE = 'url_records';
 
@@ -26,7 +26,7 @@ const createUrl = async (longUrl, origin) => {
         const shortUrl = buildShort(origin, urlCode);
         return { id, urlCode, longUrl, shortUrl, counter };
     } else {
-        const urlCode = shortId.generate();
+        const urlCode = nanoid(8);
         try {
             const newUrl = {
                 longUrl,

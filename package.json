@@ -1,7 +1,7 @@
 {
     "name": "swish-nextjs",
     "description": "API to shorten URLs made in NextJS",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "private": true,
     "author": {
         "name": "Alejandro Moreno",
@@ -16,10 +16,10 @@
     },
     "dependencies": {
         "harperive": "^2.0.1",
+        "nanoid": "^3.1.23",
         "next": "11.0.1",
         "react": "17.0.2",
-        "react-dom": "17.0.2",
-        "shortid": "^2.2.16"
+        "react-dom": "17.0.2"
     },
     "devDependencies": {
         "eslint": "7.30.0",
